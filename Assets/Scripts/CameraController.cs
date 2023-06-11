@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour
     private const int MAX_FIELD_OF_VIEW = 60;
     // The most zoomed in the camera can go.
     private const int MIN_FIELD_OF_VIEW = 20;
+    // change camera speed according to zoom in/out
+    private float zoom_amendment = 1.0f;
 
     private void Start()
     {
@@ -24,13 +26,16 @@ public class CameraController : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
+        // Adjust camera speed by change zoom_amendment proportion to zoom in/out
+        zoom_amendment = 1.0f - (MAX_FIELD_OF_VIEW - Camera.main.fieldOfView) / MAX_FIELD_OF_VIEW;
+        
         // Move around by clicking and dragging video with mouse.
         // Ref: <https://youtu.be/RxlQnPcOoYc> (03:53/09:37)
         if (Input.GetMouseButton(0))
         {
-            transform.RotateAround(transform.position, Vector3.down, CAMERA_SPEED * Input.GetAxis("Mouse X"));
-            transform.RotateAround(transform.position, transform.right, CAMERA_SPEED * Input.GetAxis("Mouse Y"));
+            transform.RotateAround(transform.position, Vector3.down, zoom_amendment * CAMERA_SPEED * Input.GetAxis("Mouse X"));
+            transform.RotateAround(transform.position, transform.right, zoom_amendment * CAMERA_SPEED * Input.GetAxis("Mouse Y"));
         }
 
         // Zoom in/out of the view by scrolling.
