@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// <c>CameraController</c> contains the logic that allows users to zoom into/out of a given 360-degree video, as well
+/// as being able to change the camera view by clicking and dragging the screen.
+/// </summary>
 public class CameraController : MonoBehaviour
 {
     // The speed the viewer can move the camera.
@@ -16,6 +18,9 @@ public class CameraController : MonoBehaviour
         // Set initial zoom for camera.
         // Ref: <https://gamedevbeginner.com/how-to-zoom-a-camera-in-unity-3-methods-with-examples/#zoom_camera>
         Camera.main.fieldOfView = MAX_FIELD_OF_VIEW;
+
+        // Set initial camera position and rotation at the start.
+        transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
     void Update()
@@ -38,7 +43,6 @@ public class CameraController : MonoBehaviour
         // Enforce limit on zooming in.
         if (Camera.main.fieldOfView < MIN_FIELD_OF_VIEW)
             Camera.main.fieldOfView = MIN_FIELD_OF_VIEW;
-
     }
 }
 
