@@ -20,27 +20,27 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        // don't move camera if panel is active
-        if (panel.activeSelf)
-        {
-            return;
-        }
         // Move around by dragging video with mouse
         // Ref: <https://youtu.be/RxlQnPcOoYc> (03:53/09:37)
         if (Input.GetMouseButton(0))
-        // Set initial zoom for camera.
-        // Ref: <https://gamedevbeginner.com/how-to-zoom-a-camera-in-unity-3-methods-with-examples/#zoom_camera>
-        Camera.main.fieldOfView = MAX_FIELD_OF_VIEW;
+            // Set initial zoom for camera.
+            // Ref: <https://gamedevbeginner.com/how-to-zoom-a-camera-in-unity-3-methods-with-examples/#zoom_camera>
+            Camera.main.fieldOfView = MAX_FIELD_OF_VIEW;
 
         // Set initial camera position and rotation at the start.
         transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
     void Update()
-    {   
+    {
+        // don't move camera if panel is active
+        if (panel.activeSelf)
+        {
+            return;
+        }
         // Adjust camera speed by change zoom_amendment proportion to zoom in/out
         zoom_amendment = 1.0f - (MAX_FIELD_OF_VIEW - Camera.main.fieldOfView) / MAX_FIELD_OF_VIEW;
-        
+
         // If press "C" reset camera position and rotation
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -49,7 +49,7 @@ public class CameraController : MonoBehaviour
 
         // if user press "V", change dragging type
         if (Input.GetKeyDown(KeyCode.V))
-        {   
+        {
             isDragging = !isDragging;
         }
 
@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour
             transform.RotateAround(transform.position, transform.right, zoom_amendment * CAMERA_SPEED * Input.GetAxis("Mouse Y"));
         }
         else
-        {   
+        {
             // Move around by pressing WASD.
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
