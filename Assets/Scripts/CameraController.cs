@@ -6,10 +6,16 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Camera _cameraObject;
     [SerializeField] private int _cameraSpeed = 5;
+    [SerializeField] private GameObject panel;
 
     // Update is called once per frame
     void Update()
     {
+        // don't move camera if panel is active
+        if (panel.activeSelf)
+        {
+            return;
+        }
         // Move around by dragging video with mouse
         // Ref: <https://youtu.be/RxlQnPcOoYc> (03:53/09:37)
         if (Input.GetMouseButton(0))
