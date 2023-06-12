@@ -12,6 +12,11 @@ public class SceneTransitionManager : MonoBehaviour
     // The delay after triggering the transition animation.
     [SerializeField] private float transitionTime = 3.0f;
 
+    /// <summary>
+    /// Flag to know if we are currently changing scenes.
+    /// </summary>
+    public bool IsTransitioning { get; private set; } = false;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -41,9 +46,15 @@ public class SceneTransitionManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator LoadScene(string sceneName)
     {
+        IsTransitioning = true;
+
+        // Allow time for the transition animation to play.
         transition.SetTrigger("ChangeScene");
         yield return new WaitForSeconds(transitionTime);
+
+        // Finish switching scenes.
         SceneManager.LoadScene(sceneName);
+        IsTransitioning = false;
     }
 }
 
