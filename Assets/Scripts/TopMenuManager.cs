@@ -12,7 +12,6 @@ public class TopMenuManager : MonoBehaviour
         panel.SetActive(false);
     }
 
-
     public void StartGame()
     {
         SceneManager.LoadScene("Scenes/2D_TowerBridge");
@@ -32,7 +31,15 @@ public class TopMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            panel.SetActive(false);
+            if (panel.activeSelf)
+            {
+                ClosePanel();
+            }
         }
+    }
+
+    public void ClosePanel()
+    {
+        panel.SetActive(false);
     }
 }
