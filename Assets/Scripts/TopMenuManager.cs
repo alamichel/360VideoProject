@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TopMenuManager : MonoBehaviour
 {
+    [SerializeField] private GameObject panel;
     public void StartGame()
     {
         SceneManager.LoadScene("Scenes/2D_TowerBridge");
@@ -13,5 +14,18 @@ public class TopMenuManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void OpenPanel()
+    {
+        panel.SetActive(true);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            panel.SetActive(false);
+        }
     }
 }
