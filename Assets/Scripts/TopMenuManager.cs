@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class TopMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject itemsButton;
+    [SerializeField] private GameObject startButton;
+    [SerializeField] private GameObject quitButton;
+
 
     void Start()
     {
@@ -25,6 +29,9 @@ public class TopMenuManager : MonoBehaviour
     public void OpenPanel()
     {
         panel.SetActive(true);
+        itemsButton.SetActive(false);
+        startButton.SetActive(false);
+        quitButton.SetActive(false);
     }
 
     void Update()
@@ -41,5 +48,8 @@ public class TopMenuManager : MonoBehaviour
     public void ClosePanel()
     {
         panel.SetActive(false);
+        itemsButton.SetActive(true);
+        startButton.SetActive(true);
+        quitButton.SetActive(true);
     }
 }
