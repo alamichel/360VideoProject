@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class TopMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
+
+    void Start()
+    {
+        panel.SetActive(false);
+    }
+
+
     public void StartGame()
     {
         SceneManager.LoadScene("Scenes/2D_TowerBridge");
