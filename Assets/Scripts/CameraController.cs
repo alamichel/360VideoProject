@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
 {
     // The transition manager for when we switch scenes.
     [SerializeField] private SceneTransitionManager sceneManager;
+    // The menu panel.
+    [SerializeField] private GameObject panel;
     // The speed the viewer can move the camera.
     private const float CAMERA_SPEED = 5.0f;
     // The most zoomed out the camera can go.
@@ -23,7 +25,10 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        // If press "C", reset camera position and rotation.
+        // Adjust camera speed by change zoom_amendment proportion to zoom in/out
+        zoomAmendment = 1.0f - (MAX_FIELD_OF_VIEW - Camera.main.fieldOfView) / MAX_FIELD_OF_VIEW;
+
+        // If press "C" reset camera position and rotation
         if (Input.GetKeyDown(KeyCode.C))
             transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
 
@@ -31,8 +36,8 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V))
             isDragging = !isDragging;
 
-        // Move camera around as desired (if not currently changing scenes).
-        if (!sceneManager.IsTransitioning)
+        // Move camera around as desired (if not currently changing scenes or with panel active).
+        if (!panel.activeSelf && !sceneManager.IsTransitioning)
             ChangeCameraView();
     }
 
@@ -98,4 +103,3 @@ public class CameraController : MonoBehaviour
         transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 }
-
