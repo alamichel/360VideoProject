@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TowerBridge.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/TopMenu.unity
+    guid: 5f1875f313a7f5e4e88a4e98ee4ef2a0
+  - enabled: 1
     path: Assets/Scenes/CrystalShowerFalls.unity
     guid: c9d07a1e6bbbd5c4eb42c17a8e41915c
   m_configObjects:
