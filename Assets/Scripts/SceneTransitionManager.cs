@@ -14,6 +14,9 @@ public class SceneTransitionManager : MonoBehaviour
     // The delay after triggering the transition animation.
     [SerializeField] private float transitionTime = 1.0f;
 
+    [SerializeField] private GameObject lookupButtons;
+    private bool activateButtons = true;
+
     /// <summary>
     /// Flag to know if we are currently changing scenes.
     /// </summary>
@@ -26,10 +29,12 @@ public class SceneTransitionManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ChangeSceneTo("TowerBridge");
+            this.activateButtons = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ChangeSceneTo("CrystalShowerFalls");
+            this.activateButtons = false;
         }
     }
 
@@ -79,6 +84,7 @@ public class SceneTransitionManager : MonoBehaviour
         transition.SetTrigger("LoadScene");
         Debug.Log($"Loaded Scene : {SceneManager.GetActiveScene().name}");
         IsTransitioning = false;
+        this.lookupButtons.SetActive(this.activateButtons);
     }
 
     /// <summary>
