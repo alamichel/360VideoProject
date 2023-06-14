@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class ItemFactory : MonoBehaviour
 {
-    private GameObject itemPrefab; // Reference to the hammer prefab
+    /*
+    private GameObject itemPrefab; // Reference to the item prefab
     private Camera mainCamera; // Reference to the main camera
     private float itemDistance = 1f; // Distance to the item from the camera
 
@@ -16,5 +17,9 @@ public class ItemFactory : MonoBehaviour
                 Instantiate(itemPrefab, itemPosition, mainCamera.transform.rotation);
             }
         }
-    }
+    }"
+
+
+    
+    */
 }

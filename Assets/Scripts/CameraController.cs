@@ -64,17 +64,17 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            // Move around by pressing WASD/arrow keys.
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            // Move around by pressing WASD.
+            if (Input.GetKey(KeyCode.W))
                 transform.RotateAround(transform.position, transform.right, -zoomAmendment * (CAMERA_SPEED + 45f) * Time.deltaTime);
 
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.S))
                 transform.RotateAround(transform.position, transform.right, zoomAmendment * (CAMERA_SPEED + 45f) * Time.deltaTime);
 
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A))
                 transform.RotateAround(transform.position, Vector3.down, zoomAmendment * (CAMERA_SPEED + 40f) * Time.deltaTime);
 
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.D))
                 transform.RotateAround(transform.position, Vector3.down, -zoomAmendment * (CAMERA_SPEED + 40f) * Time.deltaTime);
         }
 
