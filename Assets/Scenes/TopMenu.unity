@@ -227,6 +227,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1395007383}
+    - target: {fileID: 7876638709590073191, guid: 5ba1feed98702204db70db991d5df507, type: 3}
+      propertyPath: sceneTransitionManager
+      value: 
+      objectReference: {fileID: 319529410}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -293,6 +297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Transition Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 9143734004865915106, guid: 02a75463dc828e04889b8c7c982db961, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 1395007381}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -483,6 +491,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5754253069232761885, guid: d78df258060ff354280060ed236e206d, type: 3}
   m_PrefabInstance: {fileID: 1705410130}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1395007381 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5920240518749643815, guid: d78df258060ff354280060ed236e206d, type: 3}
+  m_PrefabInstance: {fileID: 1705410130}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a2d28fde5aacc498277ca7e8e0f4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &1395007383 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4670585213066514455, guid: d78df258060ff354280060ed236e206d, type: 3}

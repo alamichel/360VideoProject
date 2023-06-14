@@ -19,7 +19,7 @@ public class SceneTransitionManager : MonoBehaviour
     /// </summary>
     public bool IsTransitioning { get; private set; } = false;
 
-    void Awake() => StartCoroutine(ResetSession());
+    void Awake() => StartCoroutine(InitialSceneSetup());
 
     void Update()
     {
@@ -39,7 +39,14 @@ public class SceneTransitionManager : MonoBehaviour
     /// <param name="sceneName">
     /// The name of the scene that we should switch to, as listed in the project's build settings.
     /// </param>
-    public void ChangeSceneTo(string sceneName) => StartCoroutine(LoadScene(sceneName));
+    public void ChangeSceneTo(string sceneName)
+    {
+        // Don't allow direct loading of menu, since that should already exist.
+        if (sceneName != "TopMenu")
+        {
+            StartCoroutine(LoadScene(sceneName));
+        }
+    }
 
     /// <summary>
     /// Loads the requested scene into the game.
@@ -48,12 +55,8 @@ public class SceneTransitionManager : MonoBehaviour
     /// The name of the scene that we should switch to, as listed in the project's build settings.
     /// </param>
     /// <returns></returns>
-    IEnumerator LoadScene(string sceneName)
+    private IEnumerator LoadScene(string sceneName)
     {
-        // Don't allow direct loading of menu, since that should already exist.
-        if (sceneName == "TopMenu")
-            yield break;
-
         // Allow time for the transition animation to play.
         IsTransitioning = true;
         transition.SetTrigger("UnloadScene");
@@ -80,7 +83,10 @@ public class SceneTransitionManager : MonoBehaviour
         IsTransitioning = false;
     }
 
-    IEnumerator ResetSession()
+    /// <summary>
+    /// Sets up initial configuration for game scenes.
+    /// </summary>
+    private IEnumerator InitialSceneSetup()
     {
         // First load base scene (i.e. menu) to game.
         if (SceneManager.GetActiveScene().name != "TopMenu")
@@ -94,6 +100,15 @@ public class SceneTransitionManager : MonoBehaviour
         yield return null;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("TowerBridge"));
         Debug.Log($"Active Scene : {SceneManager.GetActiveScene().name}");
+    }
+
+    /// <summary>
+    /// Restarts the game from the beginning.
+    /// </summary>
+    public void ResetSession()
+    {
+        // Loading menu scene again will clear out data from previous session.
+        SceneManager.LoadScene("TopMenu", LoadSceneMode.Single);
     }
 }
 
