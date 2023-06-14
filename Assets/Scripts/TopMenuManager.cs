@@ -9,6 +9,7 @@ public class TopMenuManager : MonoBehaviour
     [SerializeField] private GameObject itemsButton;
     [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject quitButton;
+    [SerializeField] private SceneTransitionManager sceneTransitionManager;
 
 
     void Start()
@@ -18,7 +19,7 @@ public class TopMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Scenes/2D_TowerBridge");
+        sceneTransitionManager.ResetSession();
     }
 
     public void QuitGame()
