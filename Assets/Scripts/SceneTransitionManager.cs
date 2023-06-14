@@ -43,9 +43,7 @@ public class SceneTransitionManager : MonoBehaviour
     {
         // Don't allow direct loading of menu, since that should already exist.
         if (sceneName != "TopMenu")
-        {
             StartCoroutine(LoadScene(sceneName));
-        }
     }
 
     /// <summary>
