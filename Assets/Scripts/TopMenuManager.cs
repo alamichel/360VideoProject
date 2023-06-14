@@ -9,6 +9,7 @@ public class TopMenuManager : MonoBehaviour
     [SerializeField] private GameObject itemsButton;
     [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject quitButton;
+    [SerializeField] private GameObject topMenu;
     [SerializeField] private SceneTransitionManager sceneTransitionManager;
 
 
@@ -52,5 +53,15 @@ public class TopMenuManager : MonoBehaviour
         itemsButton.SetActive(true);
         startButton.SetActive(true);
         quitButton.SetActive(true);
+    }
+
+    public void DisableMenu()
+    {
+        topMenu.SetActive(false);
+    }
+
+    public void EnableMenu()
+    {
+        topMenu.SetActive(true);
     }
 }
